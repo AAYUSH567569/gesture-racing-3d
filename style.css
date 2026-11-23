@@ -1,70 +1,392 @@
 
+/* =================================
+   GESTURE RACING 3D
+   Main Game Styling
+================================= */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: #080d18;
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+    background: #080d18;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
 }
 
 #game-container {
-  width: 100%;
-  height: 100vh;
-  position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #080d18, #101d35);
 }
+
+/* GAME LOADING */
 
 #loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 30px;
-  font-weight: bold;
-  color: #00eaff;
-  text-align: center;
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #080d18;
+    gap: 15px;
 }
 
-#game-container canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
+#loading h1 {
+    color: #00eaff;
+    letter-spacing: 4px;
+    text-align: center;
 }
+
+#loading p {
+    color: #a5b5cc;
+}
+
+/* MAIN MENU */
+
+.menu-panel {
+    position: absolute;
+    z-index: 10;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(
+        135deg,
+        rgba(5, 12, 30, 0.95),
+        rgba(15, 30, 60, 0.88)
+    );
+}
+
+.brand {
+    color: #00eaff;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.brand span {
+    color: #ff3158;
+}
+
+.tagline {
+    color: #ff3158;
+    letter-spacing: 5px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.menu-panel h1 {
+    font-size: clamp(35px, 6vw, 70px);
+    line-height: 1.1;
+    font-weight: 900;
+    text-shadow: 0 0 25px #00d9ff;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #bdc9d9;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.menu-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 14px 25px;
+    color: white;
+    background: #10243f;
+    border: 1px solid #00d9ff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: #00d9ff;
+    color: #07111f;
+    box-shadow: 0 0 22px #00d9ff;
+    transform: translateY(-3px);
+}
+
+#start-btn {
+    background: #ff3158;
+    border-color: #ff3158;
+    min-width: 160px;
+}
+
+#start-btn:hover {
+    background: #ff5877;
+    color: white;
+    box-shadow: 0 0 25px #ff3158;
+}
+
+.menu-footer {
+    color: #8495ad;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 50px;
+}
+
+/* GAME HUD */
+
+#game-hud {
+    position: absolute;
+    z-index: 5;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hud-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
+}
+
+.hud-card {
+    min-width: 100px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(5, 15, 35, 0.85);
+    border: 1px solid rgba(0, 234, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.hud-card small {
+    display: block;
+    color: #9aacc4;
+    font-size: 10px;
+    margin-bottom: 7px;
+}
+
+.hud-card strong {
+    color: #00eaff;
+    font-size: 18px;
+}
+
+.hud-controls {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: auto;
+}
+
+.hud-controls button {
+    padding: 11px 15px;
+    font-size: 11px;
+}
+
+#nitro-btn {
+    background: #ff3158;
+    border-color: #ff3158;
+}
+
+#gesture-status {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    padding: 12px 18px;
+    background: rgba(5, 15, 35, 0.9);
+    border-radius: 8px;
+    border: 1px solid #00eaff;
+    font-size: 12px;
+}
+
+#gesture-indicator {
+    color: #00ff88;
+    margin-right: 8px;
+}
+
+#nitro-bar {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    width: 160px;
+    height: 12px;
+    background: #25334a;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#nitro-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #00eaff, #ff3158);
+    transition: width 0.2s;
+}
+
+/* MOBILE CONTROLS */
 
 #mobile-controls {
-  position: fixed;
-  bottom: 25px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 25px;
-  pointer-events: none;
+    position: absolute;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    pointer-events: auto;
 }
 
 #mobile-controls button {
-  width: 65px;
-  height: 65px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: rgba(0, 180, 255, 0.75);
-  color: white;
-  font-size: 25px;
-  pointer-events: auto;
-  touch-action: none;
+    width: 55px;
+    height: 55px;
+    padding: 0;
+    font-size: 20px;
+    border-radius: 50%;
 }
 
-#mobile-controls button:active {
-  background: #0066ff;
-  transform: scale(0.92);
+/* WEBCAM */
+
+#webcam {
+    position: absolute;
+    width: 160px;
+    height: 120px;
+    right: 20px;
+    bottom: 55px;
+    object-fit: cover;
+    border: 2px solid #00eaff;
+    border-radius: 10px;
+    transform: scaleX(-1);
+    display: none;
 }
 
-@media (min-width: 768px) {
-  #mobile-controls {
-    opacity: 0.65;
-  }
+#gesture-help {
+    position: absolute;
+    z-index: 8;
+    bottom: 100px;
+    left: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(5, 15, 35, 0.9);
+    color: #00eaff;
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* PAUSE AND GAME OVER */
+
+#pause-menu,
+#game-over,
+#garage-menu {
+    background: rgba(3, 8, 20, 0.95);
+    gap: 18px;
+}
+
+#pause-menu h2,
+#game-over h2,
+#garage-menu h2 {
+    color: #00eaff;
+    font-size: 35px;
+    letter-spacing: 3px;
+}
+
+#final-score {
+    color: #ff3158;
+    font-size: 55px;
+}
+
+#car-select {
+    width: 230px;
+    padding: 14px;
+    color: white;
+    background: #10243f;
+    border: 1px solid #00eaff;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+/* HIDDEN ELEMENTS */
+
+.hidden {
+    display: none !important;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 650px) {
+
+    .hud-top {
+        padding: 10px;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    .hud-card {
+        min-width: 70px;
+        padding: 9px;
+        flex: 1;
+    }
+
+    .hud-card strong {
+        font-size: 13px;
+    }
+
+    .hud-card small {
+        font-size: 8px;
+    }
+
+    .hud-controls {
+        top: 115px;
+        right: 10px;
+    }
+
+    .hud-controls button {
+        padding: 9px;
+        font-size: 9px;
+    }
+
+    #gesture-status {
+        bottom: 15px;
+        left: 10px;
+        font-size: 10px;
+    }
+
+    #nitro-bar {
+        bottom: 15px;
+        right: 10px;
+        width: 100px;
+    }
+
+    #mobile-controls {
+        bottom: 65px;
+    }
+
+    #mobile-controls button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .menu-panel h1 {
+        font-size: 36px;
+    }
+
+    .description {
+        font-size: 13px;
+    }
 }
