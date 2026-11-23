@@ -390,3 +390,263 @@ button:hover {
         font-size: 13px;
     }
 }
+
+/* =====================================
+   RACING 3D - PREMIUM DESIGN UPGRADE
+===================================== */
+
+#game-container {
+    background: #050816;
+    font-family: 'Arial', sans-serif;
+    isolation: isolate;
+}
+
+#game-container canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* PREMIUM MAIN MENU */
+
+#main-menu {
+    z-index: 10;
+    background:
+        radial-gradient(ellipse at 50% 45%, rgba(0, 220, 255, 0.16), transparent 55%),
+        linear-gradient(135deg, rgba(3, 8, 25, 0.96), rgba(8, 15, 38, 0.94));
+    backdrop-filter: blur(5px);
+}
+
+.brand {
+    font-size: clamp(20px, 4vw, 30px);
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px #00d9ff;
+}
+
+.tagline {
+    color: #ff3158;
+    letter-spacing: 7px;
+    font-weight: bold;
+}
+
+.menu-panel h1 {
+    font-size: clamp(38px, 7vw, 76px);
+    line-height: 1.05;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px #00d9ff, 0 0 40px rgba(0,217,255,.4);
+}
+
+.description {
+    color: #c4d4ec;
+    font-size: 15px;
+}
+
+.menu-options button {
+    min-width: 155px;
+    padding: 16px 25px;
+    border-radius: 30px;
+    letter-spacing: 2px;
+}
+
+#start-btn {
+    background: linear-gradient(90deg, #ff174f, #ff583d);
+    box-shadow: 0 0 25px rgba(255, 30, 80, .5);
+}
+
+#garage-btn {
+    background: rgba(0, 220, 255, .1);
+    border: 1px solid #00dcff;
+}
+
+.menu-footer {
+    letter-spacing: 3px;
+    color: #8fa7c9;
+}
+
+/* PREMIUM GAME HUD */
+
+#game-hud {
+    z-index: 5;
+}
+
+.hud-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 18px;
+}
+
+.hud-card {
+    background: linear-gradient(145deg, rgba(8, 20, 43, .92), rgba(12, 35, 62, .78));
+    border: 1px solid rgba(0, 225, 255, .65);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .25);
+    backdrop-filter: blur(12px);
+}
+
+.hud-card small {
+    color: #9bb6d2;
+    letter-spacing: 2px;
+}
+
+.hud-card strong {
+    color: #00eaff;
+    font-size: 19px;
+    text-shadow: 0 0 12px rgba(0, 234, 255, .5);
+}
+
+/* CONTROL PANEL */
+
+.hud-controls {
+    top: 125px;
+    right: 18px;
+    gap: 12px;
+}
+
+.hud-controls button {
+    border-radius: 30px;
+    min-width: 165px;
+    padding: 13px 18px;
+    background: rgba(5, 17, 39, .88);
+    border: 1px solid #00dfff;
+    box-shadow: 0 0 12px rgba(0, 220, 255, .12);
+    backdrop-filter: blur(10px);
+}
+
+#nitro-btn {
+    background: linear-gradient(90deg, #ff174f, #ff583d);
+    border: none;
+    box-shadow: 0 0 22px rgba(255, 30, 80, .4);
+}
+
+/* MOBILE STEERING */
+
+#mobile-controls {
+    bottom: 25px;
+    gap: 15px;
+}
+
+#mobile-controls button {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: rgba(5, 22, 48, .9);
+    border: 2px solid #00dfff;
+    box-shadow: 0 0 18px rgba(0, 220, 255, .25);
+    font-size: 23px;
+}
+
+#mobile-controls button:active {
+    background: #00cfff;
+    color: #06101e;
+    transform: scale(.92);
+}
+
+/* NITRO AND GESTURE STATUS */
+
+#nitro-bar {
+    height: 14px;
+    border: 1px solid #00dfff;
+    background: rgba(0, 0, 0, .7);
+}
+
+#nitro-fill {
+    background: linear-gradient(90deg, #00eaff, #ff3158);
+    box-shadow: 0 0 15px #00dfff;
+}
+
+#gesture-status {
+    border-radius: 25px;
+    background: rgba(5, 17, 39, .9);
+    border: 1px solid #00dfff;
+    backdrop-filter: blur(10px);
+}
+
+/* GARAGE, PAUSE AND GAME OVER */
+
+#pause-menu,
+#game-over,
+#garage-menu {
+    background:
+        radial-gradient(circle at center, rgba(0, 220, 255, .12), transparent 60%),
+        rgba(3, 8, 20, .97);
+    backdrop-filter: blur(12px);
+}
+
+#pause-menu h2,
+#game-over h2,
+#garage-menu h2 {
+    text-shadow: 0 0 20px #00dfff;
+}
+
+#car-select {
+    border-radius: 25px;
+    padding: 16px;
+}
+
+/* RESPONSIVE MOBILE DESIGN */
+
+@media (max-width: 650px) {
+    .hud-top {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 7px;
+        padding: 10px;
+    }
+
+    .hud-card {
+        padding: 9px 11px;
+        min-width: 0;
+    }
+
+    .hud-card strong {
+        font-size: 14px;
+    }
+
+    .hud-controls {
+        top: 125px;
+        right: 10px;
+        gap: 8px;
+    }
+
+    .hud-controls button {
+        min-width: 125px;
+        padding: 10px;
+        font-size: 9px;
+    }
+
+    #mobile-controls {
+        bottom: 18px;
+        gap: 10px;
+    }
+
+    #mobile-controls button {
+        width: 53px;
+        height: 53px;
+        font-size: 19px;
+    }
+
+    #gesture-status {
+        bottom: 85px;
+        left: 10px;
+        padding: 9px 12px;
+    }
+
+    #nitro-bar {
+        bottom: 20px;
+        right: 10px;
+        width: 90px;
+    }
+
+    .menu-panel {
+        padding: 18px;
+    }
+
+    .menu-panel h1 {
+        font-size: 38px;
+    }
+
+    .menu-footer {
+        font-size: 9px;
+    }
+}
