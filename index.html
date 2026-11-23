@@ -2,17 +2,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gesture Racing 3D</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d18">
+
+    <title>Gesture Racing 3D | Ultimate Racer</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div id="game-container">
-    <div id="loading">GESTURE RACING 3D</div>
-  </div>
+    <main id="game-container">
 
-  <script type="module" src="game.js"></script>
+        <!-- Game Loading Screen -->
+        <div id="loading">
+            <h1>GESTURE RACING 3D</h1>
+            <p>Preparing your racing experience...</p>
+        </div>
+
+        <!-- Main Menu -->
+        <section id="main-menu" class="menu-panel">
+            <div class="brand">⚡ GESTURE RACING <span>3D</span></div>
+
+            <p class="tagline">DRIVE BEYOND LIMITS</p>
+
+            <h1>ULTIMATE<br>RACING EXPERIENCE</h1>
+
+            <p class="description">
+                Race through different worlds.
+                Control your car with keyboard or hand gestures.
+            </p>
+
+            <div class="menu-options">
+                <button id="start-btn">START RACE</button>
+                <button id="garage-btn">CAR GARAGE</button>
+            </div>
+
+            <p class="menu-footer">
+                NEON CITY • HIGHWAY • CITY STREET
+            </p>
+        </section>
+
+        <!-- Game HUD -->
+        <section id="game-hud" class="hidden">
+
+            <div class="hud-top">
+                <div class="hud-card">
+                    <small>WORLD</small>
+                    <strong id="world-name">Random World</strong>
+                </div>
+
+                <div class="hud-card">
+                    <small>SPEED</small>
+                    <strong><span id="speed">0</span> KM/H</strong>
+                </div>
+
+                <div class="hud-card">
+                    <small>COINS</small>
+                    <strong id="coins">0</strong>
+                </div>
+
+                <div class="hud-card">
+                    <small>SCORE</small>
+                    <strong id="score">0</strong>
+                </div>
+            </div>
+
+            <div class="hud-controls">
+                <button id="camera-btn">CAMERA: BEHIND</button>
+                <button id="control-btn">CONTROL: KEYBOARD</button>
+                <button id="nitro-btn">⚡ NITRO</button>
+                <button id="pause-btn">Ⅱ PAUSE</button>
+            </div>
+
+            <div id="gesture-status">
+                <span id="gesture-indicator">●</span>
+                <span id="gesture-text">Keyboard Mode</span>
+            </div>
+
+            <div id="nitro-bar">
+                <div id="nitro-fill"></div>
+            </div>
+
+            <div id="mobile-controls">
+                <button id="left-btn">◀</button>
+                <button id="right-btn">▶</button>
+                <button id="accelerate-btn">▲</button>
+                <button id="brake-btn">▼</button>
+            </div>
+
+        </section>
+
+        <!-- Pause Menu -->
+        <section id="pause-menu" class="menu-panel hidden">
+            <h2>GAME PAUSED</h2>
+            <button id="resume-btn">RESUME</button>
+            <button id="restart-btn">RESTART RACE</button>
+            <button id="home-btn">MAIN MENU</button>
+        </section>
+
+        <!-- Race Over Screen -->
+        <section id="game-over" class="menu-panel hidden">
+            <h2>RACE COMPLETED</h2>
+            <p>Your final score</p>
+            <h1 id="final-score">0</h1>
+            <p>Coins collected: <span id="final-coins">0</span></p>
+            <button id="race-again-btn">RACE AGAIN</button>
+            <button id="menu-btn">MAIN MENU</button>
+        </section>
+
+        <!-- Car Garage -->
+        <section id="garage-menu" class="menu-panel hidden">
+            <h2>CAR GARAGE</h2>
+            <p>Choose your racing car</p>
+
+            <select id="car-select">
+                <option value="red">Red Supercar</option>
+                <option value="blue">Blue Racer</option>
+                <option value="green">Green Sport Car</option>
+            </select>
+
+            <button id="garage-back-btn">BACK</button>
+        </section>
+
+        <!-- Webcam for Hand Gesture Control -->
+        <video id="webcam" autoplay playsinline muted></video>
+
+        <!-- Gesture Instructions -->
+        <div id="gesture-help" class="hidden">
+            <p>✋ Open Palm: Accelerate</p>
+            <p>↔ Tilt Hand: Steer</p>
+            <p>✊ Close Fist: Brake</p>
+            <p>🙌 Both Hands Up: Nitro</p>
+        </div>
+
+    </main>
+
+    <script type="module" src="game.js"></script>
+
 </body>
 </html>
